@@ -33,54 +33,30 @@ public class TicketsAdapter extends RecyclerView.Adapter<TicketsAdapter.ViewHold
 
     @Override
     public void onBindViewHolder(@NonNull TicketsAdapter.ViewHolder holder, int position) {
-        //holder.categoryName.setText(ticketsDomain.get(position).getTitle());
-        String picUrl = "";
-        switch (position) {
-            case 0: {
-                picUrl = "smart_ticket";
-                holder.menuLayout.setBackground(ContextCompat.getDrawable(holder.itemView.getContext(), R.drawable.smart_ticket));
-                break;
-            }
+        String picUrl="";
 
-            case 1: {
-                picUrl = "cat_2";
-                holder.menuLayout.setBackground(ContextCompat.getDrawable(holder.itemView.getContext(), R.drawable.smart_ticket));
-                break;
-            }
-            case 2: {
-                picUrl = "cat_3";
-                holder.menuLayout.setBackground(ContextCompat.getDrawable(holder.itemView.getContext(), R.drawable.smart_ticket));
-                break;
-            }
-            case 3: {
-                picUrl = "cat_4";
-                holder.menuLayout.setBackground(ContextCompat.getDrawable(holder.itemView.getContext(), R.drawable.smart_ticket));
-                break;
-            }
-            case 4 : {
-                picUrl="cat_5";
-                holder.menuLayout.setBackground(ContextCompat.getDrawable(holder.itemView.getContext(),R.drawable.smart_ticket));
-                break;
-            }
-        }
+        holder.ticketCategory.setText(ticketsDomain.get(position).getCategory());
+        //holder.ticketPrice.setText(ticketsDomain.get(position).getPrice());
+
+        picUrl = "ticket";
         int drawableResourceId=holder.itemView.getContext().getResources().getIdentifier(picUrl,"drawable",holder.itemView.getContext().getPackageName());
-
-        Glide.with(holder.itemView.getContext())
-                .load(drawableResourceId)
-                .into(holder.categoryPic);
+       Glide.with(holder.itemView.getContext())
+             .load(drawableResourceId)
+             .into(holder.ticketPicture);
     }
     @Override
     public int getItemCount() {return ticketsDomain.size();}
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView categoryName;
-        ImageView categoryPic;
+        TextView ticketCategory,ticketPrice;
+        ImageView ticketPicture;
         ConstraintLayout menuLayout;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            //categoryName=itemView.findViewById(R.id.categoryName);
-           // categoryPic=itemView.findViewById(R.id.categoryPic);
-            //menuLayout=itemView.findViewById(R.id.menuLayout);
+            ticketCategory=itemView.findViewById(R.id.ticketCategory);
+            ticketPicture=itemView.findViewById(R.id.ticketPicture);
+            menuLayout=itemView.findViewById(R.id.menuLayout);
+            ticketPrice=itemView.findViewById(R.id.ticketPrice);
         }
     }
 }

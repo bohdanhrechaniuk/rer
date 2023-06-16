@@ -3,10 +3,18 @@ package com.example.tickets.data.model;
 public class Tickets {
     private String picture;
     private int price;
-    private String title;
+    private String category;
 
-    public Tickets(String title) {
-        this.title = title;
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
+    public Tickets(String category) {
+        this.category = category;
     }
 
     public String getPicture() {
@@ -25,5 +33,9 @@ public class Tickets {
         this.price = price;
     }
 
-
+    public Tickets(String category,String picture,int price) {
+        this.picture = picture;
+        this.price = price;
+        this.category = category;
+    }
 }
