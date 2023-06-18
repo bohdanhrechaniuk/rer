@@ -34,8 +34,9 @@ public class Tickets {
     }
 
     public Tickets(String category,String picture,int price) {
+        this.category = category;
         this.picture = picture;
         this.price = price;
-        this.category = category;
+
     }
 }

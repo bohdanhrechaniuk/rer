@@ -36,9 +36,10 @@ public class TicketsAdapter extends RecyclerView.Adapter<TicketsAdapter.ViewHold
         String picUrl="";
 
         holder.ticketCategory.setText(ticketsDomain.get(position).getCategory());
-        //holder.ticketPrice.setText(ticketsDomain.get(position).getPrice());
+        holder.ticketPrice.setText(String.valueOf(ticketsDomain.get(position).getPrice()));
 
-        picUrl = "ticket";
+
+        picUrl = "smart_ticket";
         int drawableResourceId=holder.itemView.getContext().getResources().getIdentifier(picUrl,"drawable",holder.itemView.getContext().getPackageName());
        Glide.with(holder.itemView.getContext())
              .load(drawableResourceId)
@@ -48,7 +49,7 @@ public class TicketsAdapter extends RecyclerView.Adapter<TicketsAdapter.ViewHold
     public int getItemCount() {return ticketsDomain.size();}
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView ticketCategory,ticketPrice;
+        TextView ticketCategory,ticketPrice,uahSign;
         ImageView ticketPicture;
         ConstraintLayout menuLayout;
         public ViewHolder(@NonNull View itemView) {
@@ -57,6 +58,7 @@ public class TicketsAdapter extends RecyclerView.Adapter<TicketsAdapter.ViewHold
             ticketPicture=itemView.findViewById(R.id.ticketPicture);
             menuLayout=itemView.findViewById(R.id.menuLayout);
             ticketPrice=itemView.findViewById(R.id.ticketPrice);
+            uahSign=itemView.findViewById(R.id.uahSign);
         }
     }
 }

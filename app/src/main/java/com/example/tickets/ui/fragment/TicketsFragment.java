@@ -10,10 +10,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.denzcoskun.imageslider.ImageSlider;
+import com.denzcoskun.imageslider.constants.ScaleTypes;
+import com.denzcoskun.imageslider.models.SlideModel;
 import com.example.tickets.R;
 import com.example.tickets.data.model.Tickets;
 import com.example.tickets.ui.adapter.TicketsAdapter;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class TicketsFragment extends Fragment {
@@ -25,6 +29,14 @@ public class TicketsFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view= inflater.inflate(R.layout.fragment_tickets, container, false);
 
+        ImageSlider imageSlider=view.findViewById(R.id.imageSlider);
+        ArrayList<SlideModel> slideModels = new ArrayList<>();
+
+        slideModels.add(new SlideModel(R.drawable.smart_ticket, "Дорослі квитки" , ScaleTypes.FIT));
+        slideModels.add(new SlideModel(R.drawable.smart_ticket,"Дитячі квитки" , ScaleTypes.FIT));
+        slideModels.add(new SlideModel(R.drawable.smart_ticket,"Пільгові квитки" ,ScaleTypes.FIT));
+
+        imageSlider.setImageList(slideModels,ScaleTypes.FIT);
         recyclerViewTickets(view);
         return view;
     }
@@ -36,9 +48,9 @@ public class TicketsFragment extends Fragment {
         recyclerViewTicketsList.setLayoutManager(linearLayoutManager);
 
         ArrayList<Tickets> ticketsList = new ArrayList<>();
-        ticketsList.add(new Tickets("Дитячий", "ticket" , 100));
-        ticketsList.add(new Tickets("Дорослий", "ticket" , 200));
-        ticketsList.add(new Tickets("Діти до 3 років і інваліди", "ticket" , 0));
+        ticketsList.add(new Tickets("Дорослі квитки", "ticket" , 200));
+        ticketsList.add(new Tickets("Дитячі квитки", "ticket" , 100));
+        ticketsList.add(new Tickets("Пільгові квитки", "ticket" , 0));
 
         adapter=new TicketsAdapter(ticketsList);
         recyclerViewTicketsList.setAdapter(adapter);
